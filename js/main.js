@@ -1,5 +1,23 @@
 (() => {
+  const header = document.querySelector(".site-header");
   const days = document.querySelectorAll(".day");
+
+  const setHeaderOffset = () => {
+    if (!header) return;
+    const height = Math.ceil(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty(
+      "--header-offset",
+      `${height + 24}px`
+    );
+  };
+
+  setHeaderOffset();
+  window.addEventListener("resize", setHeaderOffset);
+  window.addEventListener("load", setHeaderOffset);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(setHeaderOffset);
+  }
 
   if (!days.length) return;
 
