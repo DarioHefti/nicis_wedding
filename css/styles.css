@@ -481,7 +481,7 @@ a:hover {
 
 .event {
   display: grid;
-  grid-template-columns: 6.5rem 1fr;
+  grid-template-columns: 7.5rem 1fr;
   gap: 1rem 1.5rem;
   padding: 1rem 0;
   border-top: 1px solid rgba(63, 90, 76, 0.1);
