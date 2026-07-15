@@ -603,6 +603,191 @@ a:hover {
   }
 }
 
+@keyframes surprise-appear-boy {
+  from {
+    opacity: 0;
+    transform: translateX(-1.2rem) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes surprise-appear-girl {
+  from {
+    opacity: 0;
+    transform: translateX(1.2rem) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes head-lean-right {
+  from {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(11deg);
+  }
+  to {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes head-lean-left {
+  from {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(-11deg);
+  }
+  to {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes heart-float-center {
+  0% {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.35);
+  }
+  14% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  80% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-3.9rem) translateX(0.12rem) scale(0.7);
+  }
+}
+
+@keyframes heart-float-left {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0.4rem) scale(0.3);
+  }
+  16% {
+    opacity: 0.9;
+    transform: translate(-0.15rem, 0) scale(0.9);
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-1.15rem, -3.2rem) scale(0.55);
+  }
+}
+
+@keyframes heart-float-right {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0.4rem) scale(0.3);
+  }
+  16% {
+    opacity: 0.9;
+    transform: translate(0.15rem, 0) scale(0.9);
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(1.15rem, -3.2rem) scale(0.55);
+  }
+}
+
+.surprise-anim {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.15s ease, transform 0.4s ease;
+}
+
+:where(.is-visible) .surprise-anim {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.surprise-anim svg {
+  display: block;
+  overflow: visible;
+}
+
+.surprise-anim .boy-head,
+.surprise-anim .girl-head,
+.surprise-anim .heart {
+  transform-box: view-box;
+}
+
+.surprise-anim .boy,
+.surprise-anim .girl {
+  opacity: 0;
+}
+
+:where(.is-visible) .surprise-anim .boy {
+  animation: surprise-appear-boy 0.6s ease-out forwards;
+}
+
+:where(.is-visible) .surprise-anim .girl {
+  animation: surprise-appear-girl 0.6s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+.surprise-anim .boy-head {
+  transform-origin: 36px 37px;
+}
+
+.surprise-anim .girl-head {
+  transform-origin: 84px 37px;
+}
+
+:where(.is-visible) .surprise-anim .boy-head {
+  animation: head-lean-right 0.9s ease-in-out forwards;
+  animation-delay: 0.7s;
+}
+
+:where(.is-visible) .surprise-anim .girl-head {
+  animation: head-lean-left 0.9s ease-in-out forwards;
+  animation-delay: 0.85s;
+}
+
+.surprise-anim .heart {
+  opacity: 0;
+}
+
+.surprise-anim .heart--1 {
+  transform-origin: 61px 60px;
+}
+
+.surprise-anim .heart--2 {
+  transform-origin: 54px 62px;
+}
+
+.surprise-anim .heart--3 {
+  transform-origin: 68px 62px;
+}
+
+:where(.is-visible) .surprise-anim .heart--1 {
+  animation: heart-float-center 3s ease-out 1.3s infinite;
+}
+
+:where(.is-visible) .surprise-anim .heart--2 {
+  animation: heart-float-left 3s ease-out 1.9s infinite;
+}
+
+:where(.is-visible) .surprise-anim .heart--3 {
+  animation: heart-float-right 3s ease-out 2.5s infinite;
+}
+
 @media (max-width: 800px) {
   .event {
     grid-template-columns: 1fr;
@@ -652,6 +837,29 @@ a:hover {
 
   .flora--corner-br {
     transform: rotate(18deg) scaleX(-1);
+  }
+
+  .surprise-anim,
+  :where(.is-visible) .surprise-anim {
+    opacity: 1;
+    transform: none;
+  }
+
+  .surprise-anim .boy,
+  .surprise-anim .girl,
+  .surprise-anim .boy-head,
+  .surprise-anim .girl-head,
+  .surprise-anim .heart,
+  :where(.is-visible) .surprise-anim .boy,
+  :where(.is-visible) .surprise-anim .girl,
+  :where(.is-visible) .surprise-anim .boy-head,
+  :where(.is-visible) .surprise-anim .girl-head,
+  :where(.is-visible) .surprise-anim .heart--1,
+  :where(.is-visible) .surprise-anim .heart--2,
+  :where(.is-visible) .surprise-anim .heart--3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 
